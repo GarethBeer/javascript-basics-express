@@ -1,25 +1,31 @@
 const express = require('express');
-const strings = require('./lib/src/strings');
+const {
+  sayHello,
+  uppercase,
+  lowercase,
+  firstCharacter,
+  firstCharacters,
+} = require('./lib/src/strings');
 
 const app = express();
 
-app.get('/strings/hello/world', (req, res) => {
-  res.json({ result: strings.sayHello('world') });
+app.get('/strings/hello/:string', (req, res) => {
+  res.json({ result: sayHello(req.params.string) });
 });
 
-app.get('/strings/upper/hello', (req, res) => {
-  res.json({ result: strings.uppercase('hello') });
+app.get('/strings/upper/:string', (req, res) => {
+  res.json({ result: uppercase(req.params.string) });
 });
 
-app.get('/strings/lower/HELLO', (req, res) => {
-  res.json({ result: strings.lowercase('HELLO') });
+app.get('/strings/lower/:string', (req, res) => {
+  res.json({ result: lowercase(req.params.string) });
 });
 
-app.get('/strings/first-characters/hello', (req, res) => {
-  res.json({ result: strings.firstCharacter('h') });
+app.get('/strings/first-characters/:string', (req, res) => {
+  if (req.query.length) {
+    return res.json({ result: firstCharacters(req.params.string, req.query.length) });
+  }
+  return res.json({ result: firstCharacter(req.params.string) });
 });
 
-app.get('/strings/first-characters/sd32fg45', (req, res) => {
-  res.json({ result: strings.firstCharacters('sd32fg45') });
-});
 module.exports = app;
