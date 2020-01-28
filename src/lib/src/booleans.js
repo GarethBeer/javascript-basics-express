@@ -15,18 +15,21 @@ const none = (a, b) => {
 };
 
 const one = (a, b) => {
-  if(a && !b) {
+  if (a && !b) {
     return true;
-  } if (!a && b) {
+  }
+  if (!a && b) {
     return true;
-  } else { return false}
+  }
+  return false;
 };
 
 const truthiness = a => {
-  if (a){
-    return true;}
-    else {
-    return false;}
+  if (a) {
+    return true;
+  }
+
+  return false;
 };
 
 const isEqual = (a, b) => {
@@ -35,11 +38,11 @@ const isEqual = (a, b) => {
 
 const isGreaterThan = (a, b) => {
   return Boolean(a > b);
-  };
+};
 
 const isLessThanOrEqualTo = (a, b) => {
   return Boolean(a <= b);
- };
+};
 
 const isOdd = a => {
   return Boolean(a % 2 !== 0);
@@ -58,11 +61,11 @@ const startsWith = (char, string) => {
 };
 
 const containsVowels = string => {
- return Boolean(string.match(/[aeiou]/gi));
+  return Boolean(string.match(/[aeiou]/gi));
 };
 
 const isLowerCase = string => {
-  return string == string.toLowerCase();
+  return string === string.toLowerCase();
 };
 
 module.exports = {
@@ -80,5 +83,5 @@ module.exports = {
   isSquare,
   startsWith,
   containsVowels,
-  isLowerCase
+  isLowerCase,
 };
